@@ -14,11 +14,28 @@ class AzuressoController extends BaseController
         // Try to explicitly create the admin view namespace so Joomla finds the correct view class
         try {
             $viewName = $this->input->getCmd('view', $this->default_view);
+
+            // First try the Joomla resolver path
             $prefix = 'Joomla\\Component\\Azuresso\\Administrator\\View\\';
             $view = $this->getView($viewName, 'html', $prefix);
             if ($view) {
-                // Render the view directly
                 return $view->display();
+            }
+
+            // If resolver fails, instantiate the expected view class directly
+            $viewClass = 'Joomla\\Component\\Azuresso\\Administrator\\View\\Azuresso\\AzuressoView';
+            if (!class_exists($viewClass)) {
+                $viewFile = __DIR__ . '/../View/Azuresso/HtmlView.php';
+                if (file_exists($viewFile)) {
+                    require_once $viewFile;
+                }
+            }
+
+            if (class_exists($viewClass)) {
+                $v = new $viewClass();
+                if (method_exists($v, 'display')) {
+                    return $v->display();
+                }
             }
         } catch (\Throwable $e) {
             // fallback to parent behaviour
