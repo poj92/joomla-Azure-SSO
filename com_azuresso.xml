@@ -5,19 +5,22 @@
   <creationDate>2025-12-01</creationDate>
   <version>0.1.0</version>
   <description>Azure (Entra) OpenID Connect SSO for Joomla 5</description>
+  <license>GPL-2.0-or-later</license>
 
-  <files>
-    <filename>admin/</filename>
-    <filename>site/</filename>
+  <files folder="site">
+    <filename>azuresso.php</filename>
     <filename>index.html</filename>
-    <filename>composer.json</filename>
-    <filename>vendor/</filename>
+    <folder>src</folder>
+    <folder>views</folder>
   </files>
 
   <administration>
     <menu>Azure SSO</menu>
     <files folder="admin">
-      <filename>adminindex.html</filename>
+      <filename>azuresso.php</filename>
+      <filename>index.html</filename>
+      <folder>src</folder>
+      <folder>views</folder>
     </files>
   </administration>
 
@@ -41,14 +44,5 @@
       </fieldset>
     </fields>
   </config>
-
-  <install>
-    <sql>
-      <file driver="mysqli">sql/install.mysql.sql</file>
-    </sql>
-  </install>
-
-  <uninstall>
-  </uninstall>
 
 </extension>
