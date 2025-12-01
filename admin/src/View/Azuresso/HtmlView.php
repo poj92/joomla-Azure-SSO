@@ -9,6 +9,8 @@ class AzuressoView extends HtmlView
 {
     public function display($tpl = null)
     {
-        $this->renderDisplay($tpl);
+        // Use the parent display method provided by Joomla's HtmlView implementation.
+        // renderDisplay() is not a standard method and will cause a fatal error.
+        return parent::display($tpl);
     }
 }
