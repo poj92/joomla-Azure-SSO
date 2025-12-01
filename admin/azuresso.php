@@ -42,6 +42,14 @@ com_azuresso_log_diag('admin-entry', [
 try {
     if (!class_exists(\Joomla\Component\Azuresso\Administrator\Controller\AzuressoController::class)) {
         com_azuresso_log_diag('admin-error', 'AzuressoController class not found');
+        // Try to load controller file explicitly as fallback
+        $controllerFile = __DIR__ . '/src/Controller/AzuressoController.php';
+        if (file_exists($controllerFile)) {
+            require_once $controllerFile;
+            com_azuresso_log_diag('admin-fallback-load', $controllerFile);
+        } else {
+            com_azuresso_log_diag('admin-fallback-load-missing', $controllerFile);
+        }
     }
     $controller = new AzuressoController();
     com_azuresso_log_diag('admin-controller-created', get_class($controller));

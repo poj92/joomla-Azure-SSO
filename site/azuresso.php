@@ -39,6 +39,14 @@ com_azuresso_log_diag_site('site-entry', [
 try {
     if (!class_exists(\Joomla\Component\Azuresso\Site\Controller\AzuressoController::class)) {
         com_azuresso_log_diag_site('site-error', 'AzuressoController class not found (site)');
+        // Try to load controller file explicitly as fallback
+        $controllerFile = __DIR__ . '/src/Controller/AzuressoController.php';
+        if (file_exists($controllerFile)) {
+            require_once $controllerFile;
+            com_azuresso_log_diag_site('site-fallback-load', $controllerFile);
+        } else {
+            com_azuresso_log_diag_site('site-fallback-load-missing', $controllerFile);
+        }
     }
     $controller = new AzuressoController();
     com_azuresso_log_diag_site('site-controller-created', get_class($controller));
