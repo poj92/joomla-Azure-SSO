@@ -78,4 +78,25 @@ use Joomla\CMS\Language\Text;
       </fieldset>
     </div>
   </div>
+
+    <div class="row-fluid" style="margin-top: 20px;">
+      <div class="span12">
+        <fieldset class="adminform">
+          <legend><?php echo Text::_('Diagnostics / Logs'); ?></legend>
+          <p>Last debug output captured by the component (most recent first).</p>
+          <pre style="max-height: 240px; overflow:auto; background:#111; color:#d6e4ff; padding:10px; border-radius:6px;">
+<?php
+$logFile = JPATH_ADMINISTRATOR . '/components/com_azuresso/logs/debug.log';
+if (file_exists($logFile)) {
+    $lines = array_reverse(explode("\n", trim(file_get_contents($logFile))));
+    $show = array_slice($lines, 0, 120);
+    echo htmlspecialchars(implode("\n", $show));
+} else {
+    echo "(no debug log present yet)";
+}
+?>
+          </pre>
+        </fieldset>
+      </div>
+    </div>
 </div>
