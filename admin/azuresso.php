@@ -52,6 +52,18 @@ try {
         }
     }
     $controller = new AzuressoController();
+
+    // Ensure admin view class is loaded so Joomla can render the page.
+    $adminViewClass = 'Joomla\\Component\\Azuresso\\Administrator\\View\\Azuresso\\AzuressoView';
+    if (!class_exists($adminViewClass)) {
+        $viewFile = __DIR__ . '/src/View/Azuresso/HtmlView.php';
+        if (file_exists($viewFile)) {
+            require_once $viewFile;
+            com_azuresso_log_diag('admin-fallback-load-view', $viewFile);
+        } else {
+            com_azuresso_log_diag('admin-fallback-load-view-missing', $viewFile);
+        }
+    }
     com_azuresso_log_diag('admin-controller-created', get_class($controller));
     $controller->execute($task);
     $controller->redirect();
