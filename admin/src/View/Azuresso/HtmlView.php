@@ -5,7 +5,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\View\HtmlView;
 
-class AzurossoView extends HtmlView
+class AzuressoView extends HtmlView
 {
     public function display($tpl = null)
     {
