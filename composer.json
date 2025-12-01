@@ -1,0 +1,13 @@
+{
+  "name": "poj92/com_azuresso",
+  "description": "Joomla 5 component for Azure (Entra) OpenID Connect SSO",
+  "type": "library",
+  "require": {
+    "jumbojett/openid-connect-php": "^0.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Joomla\\Component\\Azuresso\\": "site/src/"
+    }
+  }
+}

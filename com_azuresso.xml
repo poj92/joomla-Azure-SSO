@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="5.0" method="upgrade">
+  <name>com_azuresso</name>
+  <author>Your Name</author>
+  <creationDate>2025-12-01</creationDate>
+  <version>0.1.0</version>
+  <description>Azure (Entra) OpenID Connect SSO for Joomla 5</description>
+
+  <files>
+    <filename>admin/</filename>
+    <filename>site/</filename>
+    <filename>index.html</filename>
+    <filename>composer.json</filename>
+    <filename>vendor/</filename>
+  </files>
+
+  <administration>
+    <menu>Azure SSO</menu>
+    <files folder="admin">
+      <filename>adminindex.html</filename>
+    </files>
+  </administration>
+
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="client_id" type="text" label="Client ID" description="Azure App (Client) ID" />
+        <field name="client_secret" type="password" label="Client Secret" description="Client secret from Azure (store securely)" />
+        <field name="tenant" type="text" label="Tenant ID or common" description="Azure Tenant ID (or 'common' for multi-tenant)" />
+        <field name="scopes" type="text" default="openid profile email" label="Scopes" description="Space-separated scopes (e.g. 'openid profile email')" />
+        <field name="auto_provision" type="radio" default="1" label="Auto provision users" description="Create Joomla users automatically if they don't exist">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </field>
+        <field name="default_user_group" type="text" default="Registered" label="Default user group" description="Group name to use when auto-provisioning users" />
+        <field name="allow_existing_only" type="radio" default="0" label="Require existing Joomla users" description="If enabled, only users already in Joomla can sign in">
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </field>
+        <field name="logout_redirect" type="text" label="Post logout redirect URL" description="URL to redirect users to after logout (optional)" />
+      </fieldset>
+    </fields>
+  </config>
+
+  <install>
+    <sql>
+      <file driver="mysqli">sql/install.mysql.sql</file>
+    </sql>
+  </install>
+
+  <uninstall>
+  </uninstall>
+
+</extension>
