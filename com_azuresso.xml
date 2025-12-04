@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="5.0" method="upgrade">
   <name>com_azuresso</name>
-  <author>Your Name</author>
+  <author>PeterPan IT Solutions</author>
   <creationDate>2025-12-01</creationDate>
   <version>0.1.0</version>
   <description>Azure (Entra) OpenID Connect SSO for Joomla 5</description>
