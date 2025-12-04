@@ -11,6 +11,6 @@ class DisplayController extends BaseController
 
     public function display($cachable = false, $urlparams = false)
     {
-        $this->view->display();
+        return parent::display($cachable, $urlparams);
     }
 }
