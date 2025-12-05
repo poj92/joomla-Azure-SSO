@@ -10,6 +10,14 @@ class AzuressoController extends BaseController
 {
     protected $default_view = 'azuresso';
 
+    public function __construct($config = array())
+    {
+        if (empty($config['base_path'])) {
+            $config['base_path'] = JPATH_ADMINISTRATOR . '/components/com_azuresso';
+        }
+        parent::__construct($config);
+    }
+
     public function display($cachable = false, $urlparams = false)
     {
         // Ensure view and layout are set
