@@ -7,6 +7,8 @@
   <description>Azure (Entra) OpenID Connect SSO for Joomla 5</description>
   <license>GPL-2.0-or-later</license>
 
+  <namespace path="src">Joomla\Component\Azuresso</namespace>
+
   <files folder="site">
     <filename>azuresso.php</filename>
     <filename>index.html</filename>
