@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="plugin" group="authentication" method="upgrade">
-    <name>plg_authentication_entra</name>
-    <author>PeterPan IT Solutions</author>
+<extension type="plugin" group="system" method="upgrade">
+    <name>plg_system_entra</name>
+    <author>Your Name</author>
     <version>1.0.0</version>
-    <description>Authentication plugin for Microsoft Entra (Azure AD) SSO</description>
+    <description>System plugin to display Login with Azure button on Joomla login form</description>
     <files>
         <filename plugin="entra">entra.php</filename>
     </files>
@@ -11,9 +11,9 @@
         <fields name="params">
             <fieldset name="basic">
                 <field name="client_id" type="text" label="Client ID" description="Azure AD Application Client ID" />
-                <field name="client_secret" type="password" label="Client Secret" description="Azure AD Application Client Secret" />
                 <field name="tenant_id" type="text" label="Tenant ID" description="Azure AD Tenant ID" />
                 <field name="redirect_uri" type="text" label="Redirect URI" description="Redirect URI for SSO callback" />
+                <field name="button_label" type="text" label="Button Label" default="Login with Microsoft Entra" description="Text for the login button" />
             </fieldset>
         </fields>
     </config>

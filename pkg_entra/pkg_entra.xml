@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="5.0" method="upgrade">
+    <name>Microsoft Entra SSO for Joomla 5</name>
+    <packagename>entra</packagename>
+    <version>1.0.0</version>
+    <author>PeterPan IT Solutions</author>
+    <description>Complete Microsoft Entra (Azure AD) SSO integration for Joomla 5. Includes authentication plugin and login button display.</description>
+    <files folder="packages">
+        <file type="plugin" id="plg_authentication_entra" group="authentication">plg_authentication_entra.zip</file>
+        <file type="plugin" id="plg_system_entra" group="system">plg_system_entra.zip</file>
+    </files>
+    <updateservers>
+        <server type="extension" priority="1" name="Entra SSO Updates">https://example.com/updates.xml</server>
+    </updateservers>
+</extension>
