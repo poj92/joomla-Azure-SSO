@@ -4,55 +4,47 @@ A complete Microsoft Entra (Azure AD) Single Sign-On (SSO) integration for Jooml
 
 ## Features
 
-- **Authentication Plugin**: Handles OAuth2 token exchange with Microsoft Entra
-- **System Plugin**: Displays a "Login with Microsoft Entra" button on the Joomla login form
-- **Seamless Integration**: Works with Joomla's native user system
-- **Easy Configuration**: Simple plugin parameters for setup
+- **Authentication Plugin**: Exchanges the Azure authorization code for tokens and validates the user by email
+- **System Plugin**: Renders the "Login with Microsoft Entra" button on the Joomla login form and handles the Azure callback
+- **State/CSRF protection**: Adds a per-request state value to the Azure authorize URL and checks it on return
+- **Joomla-native login**: Uses the core authentication events to sign users in (no password prompt)
+- **Simple setup**: A single package installs both plugins
 
-## Installation
+## Installation (package)
 
-1. Download the package: `pkg_entra.zip`
-2. In Joomla Admin, go to **System > Extensions > Install**
-3. Upload the zip file
-4. The package will automatically install both plugins
+1) Zip the `pkg_entra` folder into `pkg_entra.zip` (the zip root must contain `pkg_entra.xml`).
+2) In Joomla Admin go to **System > Extensions > Install**, upload `pkg_entra.zip`.
+3) Both plugins install in one step.
 
 ## Configuration
 
 After installation, configure the plugins:
 
-### Step 1: Get Azure AD Credentials
-1. Go to [Azure Portal](https://portal.azure.com)
-2. Create a new App Registration
-3. Copy your **Client ID** and **Tenant ID**
-4. Create a Client Secret and copy it
-5. Set the Redirect URI to your Joomla site: `https://your-joomla-site.com/`
+### Step 1: Azure App Registration
+1. In [Azure Portal](https://portal.azure.com) create an App Registration.
+2. Copy **Client ID** and **Tenant ID**.
+3. Create a **Client Secret** and copy it.
+4. Add a **Redirect URI** (web) that exactly matches your Joomla site, e.g. `https://your-joomla-site.com/` (include path if you use one).
 
 ### Step 2: Configure in Joomla
-1. Go to **System > Plugins**
-2. Find and enable both plugins:
+1. Go to **System > Plugins** and enable:
    - **Authentication - Entra**
    - **System - Entra**
+2. Open **Authentication - Entra** and set: Client ID, Client Secret, Tenant ID, Redirect URI.
+3. Open **System - Entra** and set: Client ID, Client Secret, Tenant ID, Redirect URI, Button Label (optional).
 
-3. Configure **Authentication - Entra**:
-   - Client ID: (from Azure)
-   - Client Secret: (from Azure)
-   - Tenant ID: (from Azure)
-   - Redirect URI: `https://your-joomla-site.com/`
-
-4. Configure **System - Entra**:
-   - Client ID: (from Azure)
-   - Tenant ID: (from Azure)
-   - Redirect URI: `https://your-joomla-site.com/`
-   - Button Label: (optional, default: "Login with Microsoft Entra")
+### Step 3: Test
+1. Visit the Joomla login page on the frontend.
+2. Click **Login with Microsoft Entra**.
+3. Sign in at Microsoft; you will be redirected back and logged in automatically if a Joomla user with the same email exists.
 
 ## How It Works
 
-1. User visits the Joomla login page
-2. The "Login with Microsoft Entra" button is displayed
-3. User clicks the button and is redirected to Microsoft's login page
-4. After successful authentication, user is redirected back to Joomla with an authorization code
-5. The authentication plugin exchanges the code for a token
-6. User is automatically logged into Joomla
+1) User visits the Joomla login page; the system plugin injects the Entra button.
+2) The button sends the user to Azure with `state` for CSRF protection.
+3) Azure returns `code` (and `state`) to Joomla.
+4) The system plugin checks `state`, exchanges `code` for tokens, decodes the ID token, and finds the Joomla user by email.
+5) The plugin triggers Joomla’s login event and sets the identity; user is signed in without entering a Joomla password.
 
 ## Requirements
 
@@ -63,9 +55,10 @@ After installation, configure the plugins:
 
 ## Notes
 
-- Users must already exist in Joomla to log in via SSO
-- The plugin matches users by email address
-- For production use, consider adding user auto-provisioning and enhanced error handling
+- Users must already exist in Joomla to log in via SSO (matched by email)
+- Redirect URI must match exactly (scheme/host/path) with the Azure app setting
+- Ensure PHP cURL is enabled on the server
+- For production, add JWT signature validation (e.g., with the bundled OpenID Connect library) and consider user auto-provisioning
 
 ## Support
 

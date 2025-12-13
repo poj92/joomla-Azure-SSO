@@ -11,6 +11,7 @@
         <fields name="params">
             <fieldset name="basic">
                 <field name="client_id" type="text" label="Client ID" description="Azure AD Application Client ID" />
+                <field name="client_secret" type="password" label="Client Secret" description="Azure AD Application Client Secret" />
                 <field name="tenant_id" type="text" label="Tenant ID" description="Azure AD Tenant ID" />
                 <field name="redirect_uri" type="text" label="Redirect URI" description="Redirect URI for SSO callback" />
                 <field name="button_label" type="text" label="Button Label" default="Login with Microsoft Entra" description="Text for the login button" />
