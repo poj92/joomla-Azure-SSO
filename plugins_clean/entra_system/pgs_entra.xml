@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>PGS_Entra_SSO - UI</name>
+    <author>PeterPam Global Services</author>
+    <version>1.0.0</version>
+    <description>Displays the Microsoft Entra login button on Joomla login form</description>
+    <license>MIT</license>
+    <requires>
+        <joomla>5.0</joomla>
+    </requires>
+    <files>
+        <filename plugin="pgs_entra">pgs_entra.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="client_id" type="text" label="Client ID" description="Same as authentication plugin" required="true" />
+                <field name="tenant_id" type="text" label="Tenant ID" description="Same as authentication plugin" required="true" />
+                <field name="redirect_uri" type="url" label="Redirect URI" description="Same as authentication plugin" required="true" />
+                <field name="button_label" type="text" label="Button Label" default="Login with Microsoft Entra" description="Text for the login button" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

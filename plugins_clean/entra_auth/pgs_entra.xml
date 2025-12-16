@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="authentication" method="upgrade">
+    <name>PGS_Entra_SSO</name>
+    <author>PeterPam Global Services</author>
+    <version>1.0.0</version>
+    <description>Simple Microsoft Entra (Azure AD) SSO authentication for Joomla</description>
+    <license>MIT</license>
+    <requires>
+        <joomla>5.0</joomla>
+    </requires>
+    <files>
+        <filename plugin="pgs_entra">pgs_entra.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="client_id" type="text" label="Client ID" description="Azure AD App Registration Client ID" required="true" />
+                <field name="client_secret" type="password" label="Client Secret" description="Azure AD App Registration Client Secret" required="true" />
+                <field name="tenant_id" type="text" label="Tenant ID" description="Azure AD Tenant ID (Directory ID)" required="true" />
+                <field name="redirect_uri" type="url" label="Redirect URI" description="Must exactly match the URI configured in Azure AD" required="true" />
+                <field name="button_label" type="text" label="Button Label" default="Login with Microsoft Entra" description="Text displayed on the login button" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
