@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" group="authentication" method="upgrade">
-    <name>plg_authentication_entra</name>
-    <author>PeterPan IT Solutions</author>
+    <name>PGS_Entra_SSO - Authentication</name>
+    <author>PeterPam Global Services</author>
     <version>1.0.0</version>
     <description>Authentication plugin for Microsoft Entra (Azure AD) SSO</description>
     <files>
