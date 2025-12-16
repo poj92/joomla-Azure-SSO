@@ -121,7 +121,6 @@ class PlgSystemEntra extends Plugin
             }
         }
     }
-}
 
     /**
      * Handle Azure AD callback and perform login when code is present.

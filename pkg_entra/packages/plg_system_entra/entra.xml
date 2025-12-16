@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" group="system" method="upgrade">
     <name>plg_system_entra</name>
-    <author>Your Name</author>
+    <author>PeterPan IT Solutions</author>
     <version>1.0.0</version>
     <description>System plugin to display Login with Azure button on Joomla login form</description>
     <files>
