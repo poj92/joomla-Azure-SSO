@@ -5,6 +5,9 @@
     <version>1.0.0</version>
     <author>PeterPam Global Services</author>
     <description>Complete Microsoft Entra (Azure AD) SSO integration for Joomla 5. Includes authentication plugin and login button display.</description>
+    <requires>
+        <joomla>5.0</joomla>
+    </requires>
     <files folder="packages">
         <file type="plugin" id="plg_authentication_entra" group="authentication">plg_authentication_entra</file>
         <file type="plugin" id="plg_system_entra" group="system">plg_system_entra</file>

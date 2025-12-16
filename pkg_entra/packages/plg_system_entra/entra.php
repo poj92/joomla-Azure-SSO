@@ -4,6 +4,8 @@
  * Displays login button on the login form
  */
 
+defined('_JEXEC') or die;
+
 use Joomla\CMS\Plugin\Plugin;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;

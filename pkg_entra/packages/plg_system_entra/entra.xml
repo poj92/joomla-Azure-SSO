@@ -4,6 +4,9 @@
     <author>PeterPam Global Services</author>
     <version>1.0.0</version>
     <description>System plugin to display Login with Azure button on Joomla login form</description>
+    <requires>
+        <joomla>5.0</joomla>
+    </requires>
     <files>
         <filename plugin="entra">entra.php</filename>
     </files>

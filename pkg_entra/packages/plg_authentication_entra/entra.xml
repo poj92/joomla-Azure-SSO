@@ -4,6 +4,9 @@
     <author>PeterPam Global Services</author>
     <version>1.0.0</version>
     <description>Authentication plugin for Microsoft Entra (Azure AD) SSO</description>
+    <requires>
+        <joomla>5.0</joomla>
+    </requires>
     <files>
         <filename plugin="entra">entra.php</filename>
     </files>

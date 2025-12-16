@@ -3,6 +3,8 @@
  * Joomla! Authentication Plugin for Microsoft Entra (Azure AD) SSO
  */
 
+defined('_JEXEC') or die;
+
 use Joomla\CMS\Plugin\Plugin;
 use Joomla\CMS\Factory;
 use Joomla\CMS\User\UserHelper;
